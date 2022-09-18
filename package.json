@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "morgan": "^1.10.0"
+  },
+  "name": "mz_server",
+  "version": "1.0.0",
+  "main": "app.js",
+  "devDependencies": {},
+  "scripts": {
+    "dev": "nodemon app.js",
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
