@@ -1,11 +1,15 @@
 {
   "dependencies": {
-    "morgan": "^1.10.0"
+    "dotenv": "^16.0.2",
+    "express": "^4.18.1",
+    "helmet": "^6.0.0",
+    "mariadb": "^3.0.1",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.20"
   },
   "name": "mz_server",
   "version": "1.0.0",
   "main": "app.js",
-  "devDependencies": {},
   "scripts": {
     "dev": "nodemon app.js",
     "start": "node app.js",
