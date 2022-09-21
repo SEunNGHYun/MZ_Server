@@ -1,38 +1,38 @@
-CREATE TABLE User 
+CREATE TABLE USERS_TB
 (
-  user_ID            VARCHAR(30)     NOT NULL,
-  user_password      VARCHAR         NOT NULL,
+  user_id            VARCHAR(50)     NOT NULL PRIMARY KEY UNIQUE,
+  user_password      TEXT            NOT NULL,
   user_age           INT             NOT NULL,
   user_state         VARCHAR(20)     NOT NULL,
   user_city          VARCHAR(30)             ,
-  user_createdAt     DATE                    ,
-  PRIMARY KEY(user_ID)
+  user_createdAt     DATE                    
 )
 
-CREATE TABLE Interest 
+CREATE TABLE INTERESTES_TB
 (
-  Interest_ID         INT             NOT NULL,
-  Interest_img        VARCHAR         NULL,
-  Interest_field      VARCHAR(10)     NOT NULL,
-  PRIMARY KEY(Interest_ID)
+  interest_id         INT             PRIMARY KEY UNIQUE AUTO_INCREMENT,
+  interest_img        TEXT            NULL,
+  interest_field      VARCHAR(10)     NOT NULL
 )
 
-CREATE TABLE Interest_User
+CREATE TABLE INTERESTES_USERS_TB
 (
-  Interest_ids        INT             NOT NULL,
-  user_ids            INT             NOT NULL,
-  FOREIGN KEY(Interest_ids) REFERENCES User (user_ID)
+  interest_ids        INT                 NOT NULL,
+  user_ids            VARCHAR(50)         NOT NULL,
+  FOREIGN KEY (interest_ids) REFERENCES INTERESTES_TB(interest_id)
     ON DELETE CASCADE,
-  FOREIGN KEY(user_ids) REFERENCES Interest (Interest_ID)
-    ON DELETE CASCADE
+  FOREIGN KEY (user_ids) REFERENCES USERS_TB(user_id)
+    ON DELETE CASCADE 
     ON UPDATE CASCADE
 )
 
-CREATE TABLE Scrab_Policy 
+
+CREATE TABLE SCRAB_POLICIES
 (
-  user_id   INT             NOT NULL,
-  policy_id VARCHAR         NOT NULL,
-  FOREIGN KEY(user_id)  REFERENCES User (user_ID)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE
+  user_id             VARCHAR(50)          NOT NULL,
+  policy_id           TEXT                 NOT NULL,
+  FOREIGN KEY (user_id) REFERENCES USERS_TB(user_id)
+  ON DELETE CASCADE 
+  ON UPDATE CASCADE
 )
+
