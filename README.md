@@ -16,6 +16,12 @@
 <br/>
 
 ------
+<center>
+<a font href="https://yunstil.notion.site/MZ-Api-049d75c007bd41c782bf363d96c4486b">
+api문서 확인하기</a>
+</center>
+
+------
 
 <br/>
 
@@ -23,3 +29,7 @@
 <br/>
 <img src="https://velog.velcdn.com/images/swerty14/post/135aeca9-51fe-441c-bb97-6a1fd7385632/image.png" alt="MZ_DB_Schema" style="width:450px;"/>
 </center>
+
+<br/>
+
+

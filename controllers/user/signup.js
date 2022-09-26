@@ -1,5 +1,5 @@
 const { getConnection } = require('../../dbConnect')
-const { cryptoPassword } = require('../../utils')
+const { cryptoPassword } = require('../../modules/auth');
 
 module.exports = async (req, res) => {
 

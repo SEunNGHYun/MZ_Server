@@ -5,7 +5,8 @@ CREATE TABLE USERS_TB
   user_age           INT             NOT NULL,
   user_state         VARCHAR(20)     NOT NULL,
   user_city          VARCHAR(30)             ,
-  user_createdAt     DATE                    
+  refresh_token      TEXT            NULL,
+  user_createdAt     TIMESTAMP       ON_UPDATE CURRENT_TIMESTAMP   
 )
 
 CREATE TABLE INTERESTES_TB
@@ -36,3 +37,4 @@ CREATE TABLE SCRAB_POLICIES
   ON UPDATE CASCADE
 )
 
+SET TIME ZONE 'Asia/Seoul';
