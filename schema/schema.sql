@@ -12,6 +12,7 @@ CREATE TABLE USERS_TB
 CREATE TABLE INTERESTES_TB
 (
   interest_id         INT             PRIMARY KEY UNIQUE AUTO_INCREMENT,
+  interest_code       VARCHAR(10)     NOT NULL,
   interest_img        TEXT            NULL,
   interest_field      VARCHAR(10)     NOT NULL
 )
