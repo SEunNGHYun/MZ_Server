@@ -1,6 +1,7 @@
 module.exports = {
   policyDataURL : "https://www.youthcenter.go.kr/opi/empList.do",
   placeDataURL : "https://www.youthcenter.go.kr/opi/wantedSpace.do",
+<<<<<<< HEAD
   naverNewsURL : "https://openapi.naver.com/v1/search/news.json",
   changeRegionCode : (state, city) => {
     let reginCode = {
@@ -152,4 +153,6 @@ module.exports = {
   return {"stateCode" : reginCode[state], "cityCode" : reginCode[city] || null }
 
 }
+=======
+>>>>>>> 4526610eb715b7371f7ec1ad10da8748e4244d02
 }
