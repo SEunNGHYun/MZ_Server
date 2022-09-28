@@ -12,7 +12,7 @@ module.exports = async (req, res) => {
     .then(result => {
       if (result.length > 0) {
         return res.status(400).json({
-          status : 400,
+          status : 404,
           message : "이미 스크랩을 하셨습니다."
         })
       }
