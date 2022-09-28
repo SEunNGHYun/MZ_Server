@@ -7,6 +7,8 @@ const bodyParser = require('body-parser');
 const userRoutes = require('./routes/user');
 const interestRoutes = require('./routes/interest')
 const policyRoutes = require('./routes/policy')
+const scrabRoutes = require('./routes/scrab')
+const mainRoutes = require('./routes/main')
 
 env.config({ path: './.env' })
 
@@ -25,6 +27,8 @@ const port = 3000;
 app.use("/user", userRoutes)
 app.use('/interest', interestRoutes)
 app.use('/policy', policyRoutes)
+app.use('/scrab', scrabRoutes)
+app.use('/main', mainRoutes)
 
 app.listen(port, () => {
   console.log(`${port}에서 서버 진행 중..`);

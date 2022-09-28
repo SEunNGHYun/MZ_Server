@@ -7,7 +7,7 @@ module.exports = {
     return jwt.sign({
       user_id : id
     }, process.env.SECRET_KEY,{
-      expiresIn : '20h'
+      expiresIn : '2h'
     })
   },
   makeRefreshToken : () => {

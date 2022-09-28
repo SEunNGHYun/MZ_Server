@@ -10,7 +10,7 @@ module.exports = async (req, res) => {
       user_password
     } = req.body
     //요청에 담긴 데이터를 추출
-
+  
     //유저의 데이터의 유효성을 검사허기 => 4xx에러 
     
     user_password = cryptoPassword(user_password)
