@@ -1,17 +1,12 @@
 const axios = require('axios');
-const utf8 = require('utf8');
 const { getConnection } = require('../../dbConnect')
-const { verifyAccessToken } = require('../../modules/auth');
 const { placeDataURL, changeRegionCode, naverNewsURL} = require('../../modules/utils')
 
 module.exports = async (req, res) => {
   try{
+    const { user_id } = req //token복호화하여 앞에 저장해놓은 값을 꺼내기
     const dbConnect = await getConnection()
-    let { authorization } = req.headers;
-    //뉴스 api?
     
-    let { user_id } = await verifyAccessToken(authorization);
-
     let userData = await dbConnect.query(`
         select USERS_TB.user_state, USERS_TB.user_city 
         from USERS_TB 
@@ -60,7 +55,7 @@ module.exports = async (req, res) => {
     })
     //xml을 json으로 변경
   }catch(err){
-    console.log(err);
+    console.log("err : ", err);
     return res.status(500).json({
       status: 500,
       message : "server error"

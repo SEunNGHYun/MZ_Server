@@ -1,14 +1,12 @@
 const axios = require('axios');
 const { getConnection } = require('../../dbConnect')
-const { verifyAccessToken } = require('../../modules/auth');
 const { policyDataURL } = require('../../modules/utils')
 
 module.exports = async (req, res) => {
   try{
+    const { user_id } = req //token복호화하여 앞에 저장해놓은 값을 꺼내기
     const dbConnect = await getConnection()
-    let { authorization } = req.headers;
-    //페이지 갯수도 넣어야 할 듯    
-    let { user_id } = await verifyAccessToken(authorization);
+    
 
     let data = await dbConnect.query(`
         select INTERESTES_TB.interest_code 

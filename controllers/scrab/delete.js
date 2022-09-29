@@ -1,12 +1,10 @@
 const { getConnection } = require('../../dbConnect')
-const { verifyAccessToken } = require('../../modules/auth');
 
 module.exports = async (req, res) => {
   try{
+    const { user_id } = req //token복호화하여 앞에 저장해놓은 값을 꺼내기
+    let { policy_id } = req.headers;
     const dbConnect = await getConnection()
-    let { authorization , policy_id } = req.headers;
-    //페이지 갯수도 넣어야 할 듯    
-    let { user_id } = await verifyAccessToken(authorization);
 
     await dbConnect.query("delete from SCRAB_POLICIES where user_id = ? and policy_id = ?", [user_id, policy_id])
     

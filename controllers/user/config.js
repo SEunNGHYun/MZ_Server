@@ -1,13 +1,10 @@
 const { getConnection } = require('../../dbConnect')
-const { verifyAccessToken, cryptoPassword } = require('../../modules/auth');
+const { cryptoPassword } = require('../../modules/auth');
 
 module.exports = async (req, res) => {
-  const dbConnect = await getConnection()
-    //데이터 베이스와 연결
   try {
-    let { authorization } = req.headers;
-    //헤더에 있는 토믄을 가져온다.
-  
+    const dbConnect = await getConnection()
+    const { user_id } = req //token복호화하여 앞에 저장해놓은 값을 꺼내기
     let {
       user_password,
       user_age,
@@ -18,8 +15,6 @@ module.exports = async (req, res) => {
     //유저정보를 수정할 데이터를 추출한다. 
     //id는 primary key이미로 변경이 불가능하다.
     
-    let { user_id } = await verifyAccessToken(authorization);
-    //토큰을 복호화하여 유저의 아이디를 추출한다.
 
     user_password = cryptoPassword(user_password)
     //user_password를 암호화한다. 
@@ -36,7 +31,6 @@ module.exports = async (req, res) => {
         dbConnect.batch("insert into INTERESTES_USERS_TB(user_ids, interest_ids) values(?,?)", insert_user_interest)
         .then(_ => {
           //여러개의 값을 한꺼번에 넣는 방법
-          dbConnect.end()
           return res.status(200).json({
             status: 200,
             message : "수정 성공"
@@ -45,8 +39,6 @@ module.exports = async (req, res) => {
     })
   } catch (err) {
     console.log(err)
-    dbConnect.rollback()
-    dbConnect.end()
     return res.status(500).json({
       status : 500,
       message : "Server Error"

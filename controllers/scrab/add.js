@@ -1,22 +1,16 @@
 const { getConnection } = require('../../dbConnect')
-const { verifyAccessToken } = require('../../modules/auth');
 
 module.exports = async (req, res) => {
   try{
+    const { user_id } = req //token복호화하여 앞에 저장해놓은 값을 꺼내기
+    let { policy_id } = req.headers;
     const dbConnect = await getConnection()
-    let { authorization , policy_id } = req.headers;
-    //페이지 갯수도 넣어야 할 듯    
-    let { user_id } = await verifyAccessToken(authorization);
 
     dbConnect.query("select * from SCRAB_POLICIES where user_id = ? and policy_id = ?", [user_id, policy_id])
     .then(result => {
       if (result.length > 0) {
         return res.status(400).json({
-<<<<<<< HEAD
-          status : 405,
-=======
           status : 404,
->>>>>>> 4526610eb715b7371f7ec1ad10da8748e4244d02
           message : "이미 스크랩을 하셨습니다."
         })
       }

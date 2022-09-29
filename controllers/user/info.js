@@ -1,12 +1,10 @@
 const { getConnection } = require('../../dbConnect');
-const { verifyAccessToken } = require('../../modules/auth');
 
 module.exports = async (req, res) => {
   try {
-    let { authorization } = req.headers;
+    const { user_id } = req //token복호화하여 앞에 저장해놓은 값을 꺼내기
     const dbConnect = await getConnection();
 
-    let { user_id } = await verifyAccessToken(authorization);
     //토큰의 정보를 가지고 유저 파악 
 
     let interestData = await dbConnect.query(
