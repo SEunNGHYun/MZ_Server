@@ -1,4 +1,5 @@
 const axios = require('axios');
+const convert = require('xml-js');
 const { getConnection } = require('../../dbConnect')
 const { placeDataURL, changeRegionCode, naverNewsURL} = require('../../modules/utils')
 
@@ -34,6 +35,9 @@ module.exports = async (req, res) => {
     // var encodingTo_utf8 = Buffer.from('청년정책', 'utf-8').toString();
     // console.log(encodingTo_utf8)
 
+    let changeData = convert.xml2js(policyData.data, {compact: true})
+      //xml 데이터를 js로 변환
+
     let newsData = await axios({
       method : "get",
       url : naverNewsURL,
@@ -50,7 +54,7 @@ module.exports = async (req, res) => {
 
     return res.status(200).json({
       status : 200,
-      policy_data : "구현중...",
+      policy_data : changeData,
       news_data : newsData.data
     })
     //xml을 json으로 변경

@@ -8,7 +8,8 @@
     "mariadb": "^3.0.1",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.20",
-    "utf8": "^3.0.0"
+    "utf8": "^3.0.0",
+    "xml-js": "^1.6.11"
   },
   "name": "mz_server",
   "version": "1.0.0",

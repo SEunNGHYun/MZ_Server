@@ -1,4 +1,6 @@
 const axios = require('axios');
+const convert = require('xml-js');
+const change = require("../../modules/utils");
 const { getConnection } = require('../../dbConnect')
 const { policyDataURL } = require('../../modules/utils')
 
@@ -24,7 +26,6 @@ module.exports = async (req, res) => {
     types = types.slice(0, -1)
     //관심 분야를 요청보낼 서버의 기주에 맞추어 편집
   
-    console.log(types)
     let policyData = await axios({
       method : "get",
       url : policyDataURL,
@@ -34,9 +35,12 @@ module.exports = async (req, res) => {
       }
     })
 
+    //xml 데이터를 js로 변환
+    let changeData = convert.xml2js(policyData.data, {compact: true})
+
     return res.status(200).json({
       status : 200,
-      data : "구현중..."
+      data : changeData
  })
     //xml을 json으로 변경
   }catch(err){
