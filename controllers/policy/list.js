@@ -1,11 +1,11 @@
 const axios = require('axios');
 const convert = require('xml-js');
-const change = require("../../modules/utils");
 const { getConnection } = require('../../dbConnect')
 const { policyDataURL } = require('../../modules/utils')
 
 module.exports = async (req, res) => {
   try{
+    const {pageIndex } = req.query
     const { user_id } = req //token복호화하여 앞에 저장해놓은 값을 꺼내기
     const dbConnect = await getConnection()
     
@@ -30,7 +30,7 @@ module.exports = async (req, res) => {
       method : "get",
       url : policyDataURL,
       params : {
-        pageIndex : 1, openApiVlak : process.env.API_SECRET_KEY, 
+        pageIndex : pageIndex || 1, openApiVlak : process.env.API_SECRET_KEY, 
         display : 10, bizTycdSel : types
       }
     })
