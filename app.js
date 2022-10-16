@@ -14,7 +14,7 @@ const tokenRoutes = require('./routes/token')
 env.config({ path: './.env' })
 
 app.use(bodyParser.json({
-  limit : 200
+  limit : 2000
 }))
 app.use(helmet())
 // 간단 한 보안 설정을 자동으로 정해주는 helmet 
