@@ -4,9 +4,9 @@ module.exports = async (req, res) => {
     //데이터 베이스와 연결
   try {
     const dbConnect = await getConnection()
-    const { interest_field, interest_img } = req.body
+    const { interest_field, interest_img, interest_code} = req.body
 
-    await dbConnect.query("insert into INTERESTES_TB(interest_field, interest_img) values (?, ?) ", [interest_field, interest_img])
+    await dbConnect.query("insert into INTERESTES_TB(interest_field, interest_img, interest_code) values (?, ?, ?) ", [interest_field, interest_img, interest_code])
     //관심분야 추가하기 
     return res.status(200).json({
       status : 200,

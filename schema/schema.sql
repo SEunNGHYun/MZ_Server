@@ -5,17 +5,17 @@ CREATE TABLE USERS_TB
   user_age           INT             NOT NULL,
   user_state         VARCHAR(20)     NOT NULL,
   user_city          VARCHAR(30)             ,
-  refresh_token      TEXT            NULL,
-  user_createdAt     TIMESTAMP       ON_UPDATE CURRENT_TIMESTAMP   
-)
+  refresh_token      TEXT            NULL    ,
+  user_createdAt     TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
 
 CREATE TABLE INTERESTES_TB
 (
-  interest_id         INT             PRIMARY KEY UNIQUE AUTO_INCREMENT,
+  interest_id         INT             NOT NULL PRIMARY KEY UNIQUE AUTO_INCREMENT,
   interest_code       VARCHAR(10)     NOT NULL,
   interest_img        TEXT            NULL,
   interest_field      VARCHAR(10)     NOT NULL
-)
+);
 
 CREATE TABLE INTERESTES_USERS_TB
 (
