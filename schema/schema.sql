@@ -28,13 +28,33 @@ CREATE TABLE INTERESTES_USERS_TB
     ON UPDATE CASCADE
 )
 
-
-CREATE TABLE SCRAB_POLICIES
+CREATE TABLE SCRAB_POLICIES 
 (
-  user_id             VARCHAR(50)          NOT NULL,
-  policy_id           TEXT                 NOT NULL,
-  FOREIGN KEY (user_id) REFERENCES USERS_TB(user_id)
+  policy_id               VARCHAR(20)  NOT NULL PRIMARY KEY UNIQUE,
+  policy_name             TEXT         NOT NULL,
+  policy_introduce        TEXT         NOT NULL,
+  policy_scale            VARCHAR(50)  NOT NULL,
+  policy_date             TEXT         NOT NULL,
+  policy_enable_age       VARCHAR(50)  NOT NULL,
+  policy_enable_status    VARCHAR(50)  NOT NULL,
+  policy_enable_edu       VARCHAR(50)  NOT NULL,
+  policy_enable_majr      VARCHAR(50)  NOT NULL,
+  policy_enable_spil      VARCHAR(50)  NOT NULL,
+  policy_sub_way          TEXT         NOT NULL,
+  policy_sub_place        VARCHAR(50)  NOT NULL,
+  policy_result_date      VARCHAR(50)  NOT NULL
+)
+
+
+CREATE TABLE SCRAB_POLICIES_USERS
+(
+  user_ids             VARCHAR(50)          NOT NULL,
+  policy_ids           VARCHAR(20)          NOT NULL,
+  FOREIGN KEY (user_ids) REFERENCES USERS_TB(user_id)
   ON DELETE CASCADE 
+  ON UPDATE CASCADE,
+  FOREIGN KEY (policy_ids) REFERENCES SCRAB_POLICIES(policy_id)
+  ON DELETE CASCADE
   ON UPDATE CASCADE
 )
 

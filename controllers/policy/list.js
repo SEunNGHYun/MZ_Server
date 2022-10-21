@@ -5,7 +5,7 @@ const { policyDataURL } = require('../../modules/utils')
 
 module.exports = async (req, res) => {
   try{
-    const {pageIndex } = req.query
+    const { pageIndex } = req.query
     const { user_id } = req //token복호화하여 앞에 저장해놓은 값을 꺼내기
     const dbConnect = await getConnection()
     

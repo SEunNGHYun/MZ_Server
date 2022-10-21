@@ -1,10 +1,8 @@
 const routes = require("express").Router();
 
 const tokenCheck = require('./tokenChecks/access_tokenCheck')
-const add = require("../controllers/scrab/add");
-const remove = require('../controllers/scrab/delete');
+const toggle = require("../controllers/scrab/toggle");
 
-routes.post('/', tokenCheck, add);
-routes.delete('/', tokenCheck, remove);
+routes.post('/', tokenCheck, toggle);
 
 module.exports = routes;

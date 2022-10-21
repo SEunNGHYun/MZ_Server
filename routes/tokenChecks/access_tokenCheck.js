@@ -9,6 +9,7 @@ module.exports = async (req, res, next) => {
     req.user_id = user_id;
     next()
   }catch(err){
+    console.log(err)
     return res.status(400).json({
       status : 400,
       status: err.message

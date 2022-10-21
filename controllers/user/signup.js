@@ -28,8 +28,8 @@ module.exports = async (req, res) => {
         dbConnect.batch("insert into INTERESTES_USERS_TB(user_ids, interest_ids) values(?,?)", insert_user_interest).then(_ => {
           //여러개의 값을 한꺼번에 넣는 방법
           dbConnect.end()
-          return res.status(200).json({
-            status: 200,
+          return res.status(201).json({
+            status: 201,
             message : "회원가입 성공"
           })
         })        

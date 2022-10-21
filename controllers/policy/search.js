@@ -26,9 +26,7 @@ module.exports = async (req, res) => {
         display : 10 , srchAreaCpvn : stateCode, query
       }
       //시, 군, 구 데이터가 존재할 때 params에 해당 도시의 코드를 넣어준다.
-
-      console.log(policy_params);
-
+      
       //장소 코드 넣기 
       let policyData = await axios({
       method : "get",
