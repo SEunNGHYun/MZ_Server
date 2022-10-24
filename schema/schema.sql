@@ -42,7 +42,8 @@ CREATE TABLE SCRAB_POLICIES
   policy_enable_spil      VARCHAR(50)  NOT NULL,
   policy_sub_way          TEXT         NOT NULL,
   policy_sub_place        VARCHAR(50)  NOT NULL,
-  policy_result_date      VARCHAR(50)  NOT NULL
+  policy_result_date      VARCHAR(50)  NOT NULL,
+  policy_support          VARCHAR(50)  NOT NULL
 )
 
 

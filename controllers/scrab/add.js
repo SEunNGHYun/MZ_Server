@@ -6,7 +6,8 @@ module.exports = async (req, res) => {
       const { user_id } = req //token복호화하여 앞에 저장해놓은 값을 꺼내기
       let {
         policy_id, policy_name, policy_introduce, policy_scale, policy_date, policy_enable_age, policy_enable_status,
-        policy_enable_edu, policy_enable_majr, policy_enable_spil, policy_sub_way, policy_sub_place, policy_result_date
+        policy_enable_edu, policy_enable_majr, policy_enable_spil, policy_sub_way, policy_sub_place, policy_result_date,
+        policy_support
       } = req.body    
 
       const dataCheck = await dbConnect.query("select user_ids, policy_ids from SCRAB_POLICIES_USERS where user_ids = ? and policy_ids = ?", [user_id, policy_id])
@@ -18,9 +19,9 @@ module.exports = async (req, res) => {
           })
         }
       else {
-        await dbConnect.query(`insert into SCRAB_POLICIES values (?,?,?,?,?,?,?,?,?,?,?,?,?)`, [
+        await dbConnect.query(`insert into SCRAB_POLICIES values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)`, [
           policy_id, policy_name, policy_introduce, policy_scale, policy_date, policy_enable_age, policy_enable_status,
-          policy_enable_edu, policy_enable_majr, policy_enable_spil, policy_sub_way, policy_sub_place, policy_result_date
+          policy_enable_edu, policy_enable_majr, policy_enable_spil, policy_sub_way, policy_sub_place, policy_result_date, policy_support
         ])
 
         dbConnect.query('insert into SCRAB_POLICIES_USERS(user_ids, policy_ids) values (?,?) ', [user_id, policy_id]).then(_ => {
@@ -32,6 +33,7 @@ module.exports = async (req, res) => {
       }
   
     }catch(err){
+      console.log(err)
       return res.status(500).json({
         status : 500,
         message : err
