@@ -25,9 +25,8 @@ module.exports = async (req, res) => {
       let insert_user_interest = interest_ids.map(ids => [user_id, ids])
       //관심분야들의 아이디값들과 유저의 아이디값을 묶어준다.
       try{
-        dbConnect.batch("insert into INTERESTES_USERS_TB(user_ids, interest_ids) values(?,?)", insert_user_interest).then(_ => {
+        dbConnect.batch("insert into INTERESTES_USERS_TB(user_ids, interest_codes) values(?,?)", insert_user_interest).then(_ => {
           //여러개의 값을 한꺼번에 넣는 방법
-          dbConnect.end()
           return res.status(201).json({
             status: 201,
             message : "회원가입 성공"

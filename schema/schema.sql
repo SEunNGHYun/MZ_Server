@@ -11,17 +11,16 @@ CREATE TABLE USERS_TB
 
 CREATE TABLE INTERESTES_TB
 (
-  interest_id         INT             NOT NULL PRIMARY KEY UNIQUE AUTO_INCREMENT,
-  interest_code       VARCHAR(10)     NOT NULL,
+  interest_code       VARCHAR(10)     NOT NULL PRIMARY KEY UNIQUE,
   interest_img        TEXT            NULL,
   interest_field      VARCHAR(10)     NOT NULL
 );
 
 CREATE TABLE INTERESTES_USERS_TB
 (
-  interest_ids        INT                 NOT NULL,
+  interest_codes      VARCHAR(20)         NOT NULL,
   user_ids            VARCHAR(50)         NOT NULL,
-  FOREIGN KEY (interest_ids) REFERENCES INTERESTES_TB(interest_id)
+  FOREIGN KEY (interest_codes) REFERENCES INTERESTES_TB(interest_code)
     ON DELETE CASCADE,
   FOREIGN KEY (user_ids) REFERENCES USERS_TB(user_id)
     ON DELETE CASCADE 

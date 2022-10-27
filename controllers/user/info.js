@@ -10,7 +10,7 @@ module.exports = async (req, res) => {
     let interestData = dbConnect.query(
       ` select INTERESTES_TB.interest_field from INTERESTES_USERS_TB
         left join INTERESTES_TB 
-        on INTERESTES_USERS_TB.interest_ids = INTERESTES_TB.interest_id
+        on INTERESTES_USERS_TB.interest_codes = INTERESTES_TB.interest_code
         where INTERESTES_USERS_TB.user_ids = ? 
       `, user_id)
       //유저와 관심분야의 관계테이블에서 유저의 관심분야 데이터를 불러온다.

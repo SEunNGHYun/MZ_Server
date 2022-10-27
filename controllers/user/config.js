@@ -28,7 +28,7 @@ module.exports = async (req, res) => {
         
         //기존의 연경된 관계들을 지우고 새로 데이터를 추가하여 만듬
         await dbConnect.query('delete from INTERESTES_USERS_TB where user_ids = ? ', user_id)
-        dbConnect.batch("insert into INTERESTES_USERS_TB(user_ids, interest_ids) values(?,?)", insert_user_interest)
+        dbConnect.batch("insert into INTERESTES_USERS_TB(user_ids, interest_codes) values(?,?)", insert_user_interest)
         .then(_ => {
           //여러개의 값을 한꺼번에 넣는 방법
           return res.status(200).json({
