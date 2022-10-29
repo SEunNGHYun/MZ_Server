@@ -4,7 +4,7 @@ const { cryptoPassword } = require('../../modules/auth');
 module.exports = async (req, res) => {
 
   try {
-    const dbConnect = getConnection
+    const dbConnect = await getConnection
     //데이터 베이스와 연결
     let {
       user_id,

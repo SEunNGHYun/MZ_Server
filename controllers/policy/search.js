@@ -7,7 +7,7 @@ module.exports = async (req, res) => {
   try{
     let { query, pageIndex } = req.query
     const { user_id } = req //token복호화하여 앞에 저장해놓은 값을 꺼내기
-    const dbConnect = getConnection
+    const dbConnect = await getConnection
     
     let userData = await dbConnect.query(`
         select USERS_TB.user_state, USERS_TB.user_city 

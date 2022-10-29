@@ -2,7 +2,7 @@ const getConnection  = require('../../dbConnect')
 
 module.exports = async (req, res) => {
   try{
-      const dbConnect = getConnection
+      const dbConnect = await getConnection
       const { policy_id } = req.query
       const { user_id } = req //token복호화하여 앞에 저장해놓은 값을 꺼내기 
 

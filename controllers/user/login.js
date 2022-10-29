@@ -3,7 +3,7 @@ const { cryptoPassword, makaAccessToken, makeRefreshToken } = require('../../mod
 
 module.exports = async (req, res) => {
   try {
-    const dbConnect = getConnection
+    const dbConnect = await getConnection
     //db 연결 
     let {
       user_id,

@@ -3,7 +3,7 @@ const getConnection  = require('../../dbConnect');
 module.exports = async (req, res) => {
   try {
     const { user_id } = req //token복호화하여 앞에 저장해놓은 값을 꺼내기
-    const dbConnect = getConnection;
+    const dbConnect = await getConnection
 
 
     await dbConnect.query("delete from USERS_TB where user_id = ?", user_id);

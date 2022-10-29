@@ -1,9 +1,10 @@
-const getConnection  = require('../../dbConnect')
+const getConnection = require('../../dbConnect')
 
 module.exports = async (req, res) => {
   try {
-    const dbConnect = getConnection
     //데이터 베이스와 연결
+
+    const dbConnect = await getConnection
 
     const interestData = await dbConnect.query("select * from INTERESTES_TB")
     //관심분야 목록 가져오기
