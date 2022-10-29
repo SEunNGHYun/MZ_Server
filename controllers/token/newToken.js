@@ -1,10 +1,10 @@
-const { getConnection } = require('../../dbConnect')
+const getConnection  = require('../../dbConnect')
 const { makaAccessToken } = require('../../modules/auth');
 
 module.exports = async (req, res) => {
   try{
     let { refresh_token } = req.headers
-    const dbConnect = await getConnection()
+    const dbConnect = getConnection
 
     let userData = await dbConnect.query("select user_id from USERS_TB where refresh_token = ?", refresh_token)
 

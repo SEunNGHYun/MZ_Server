@@ -1,9 +1,9 @@
-const { getConnection } = require('../../dbConnect')
+const getConnection  = require('../../dbConnect')
 const { cryptoPassword, makaAccessToken, makeRefreshToken } = require('../../modules/auth');
 
 module.exports = async (req, res) => {
   try {
-    const dbConnect = await getConnection()
+    const dbConnect = getConnection
     //db 연결 
     let {
       user_id,

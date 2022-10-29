@@ -1,9 +1,9 @@
-const { getConnection } = require('../../dbConnect')
+const getConnection  = require('../../dbConnect')
 
 module.exports = async (req, res) => {
     //데이터 베이스와 연결
   try {
-    const dbConnect = await getConnection()
+    const dbConnect = getConnection
     const { interest_field, interest_img, interest_code} = req.body
 
     await dbConnect.query("insert into INTERESTES_TB(interest_field,  interest_code, interest_img) values (?, ?, ?) ", [interest_field, interest_code, interest_img])

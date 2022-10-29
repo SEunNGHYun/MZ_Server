@@ -1,13 +1,13 @@
 const axios = require('axios');
 const convert = require('xml-js');
-const { getConnection } = require('../../dbConnect')
+const getConnection  = require('../../dbConnect')
 const { policyDataURL, changeRegionCode } = require('../../modules/utils')
 
 module.exports = async (req, res) => {
   try{
     let { query, pageIndex } = req.query
     const { user_id } = req //token복호화하여 앞에 저장해놓은 값을 꺼내기
-    const dbConnect = await getConnection()
+    const dbConnect = getConnection
     
     let userData = await dbConnect.query(`
         select USERS_TB.user_state, USERS_TB.user_city 

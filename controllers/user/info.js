@@ -1,9 +1,9 @@
-const { getConnection } = require('../../dbConnect');
+const getConnection  = require('../../dbConnect');
 
 module.exports = async (req, res) => {
   try {
     const { user_id } = req //token복호화하여 앞에 저장해놓은 값을 꺼내기
-    const dbConnect = await getConnection();
+    const dbConnect = getConnection;
 
     //토큰의 정보를 가지고 유저 파악 
 

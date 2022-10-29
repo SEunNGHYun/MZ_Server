@@ -1,9 +1,9 @@
-const { getConnection } = require('../../dbConnect')
+const getConnection  = require('../../dbConnect')
 const { cryptoPassword } = require('../../modules/auth');
 
 module.exports = async (req, res) => {
   try {
-    const dbConnect = await getConnection()
+    const dbConnect = getConnection
     const { user_id } = req //token복호화하여 앞에 저장해놓은 값을 꺼내기
     let {
       user_password,
